@@ -5,8 +5,10 @@ import org.newdawn.slick.tests.AnimationTest;
 
 public class Rectangle extends BasicGame {
 
-    private float  x;
-    private float y;
+    private float  xRect;
+    private float yRect;
+    private float xOval;
+    private float yOval;
 
     public Rectangle(String title) {
         super(title);
@@ -14,27 +16,37 @@ public class Rectangle extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-    this.x = 100;
-    this.y = 50;
+    this.xRect = 100;
+    this.yRect = 50;
+    this.xOval = 100;
+    this.yOval = 0;
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
-        this.x += (float)delta/20.0;
+        this.xRect += (float)delta/20.0;
 
-        this.y += (float)delta/40.0;
-        if (x>800) {
-            this.y = 0;
-            this.x = 0;
+        this.yRect += (float)delta/40.0;
+        if (xRect>800) {
+            this.yRect = 0;
+            this.xRect = 0;
 
+        }
+
+        this.xOval += (float) delta * 0.1;
+
+        if(xOval>800) {
+            this.yOval = 0;
+            this.xOval = 0;
         }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-            graphics.drawRect(this.x, this.y, 100, 100);
+            graphics.drawRect(this.xRect, this.yRect, 100, 100);
             graphics.drawString("Hallo", 100, 100);
+            graphics.drawOval(this.xOval, this.yOval, 100, 100);
     }
 
     public static void main(String[] argv) {
