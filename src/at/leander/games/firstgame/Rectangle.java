@@ -3,12 +3,26 @@ package at.leander.games.firstgame;
 import org.newdawn.slick.*;
 import org.newdawn.slick.tests.AnimationTest;
 
+import javax.swing.*;
+
 public class Rectangle extends BasicGame {
 
-    private float  xRect;
+    private int circleDirection;
+    private int ovalDirection;
+
+    private int rectDirection;
+
+    private float xRect;
     private float yRect;
     private float xOval;
     private float yOval;
+
+    private float xCircle;
+
+    private float yCircle;
+
+
+
 
     public Rectangle(String title) {
         super(title);
@@ -16,37 +30,64 @@ public class Rectangle extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-    this.xRect = 100;
+    this.xRect = 50;
     this.yRect = 50;
-    this.xOval = 100;
-    this.yOval = 0;
+    this.xOval = 50;
+    this.yOval = 50;
+    this.xCircle = 100;
+    this.yCircle = 50;
+    this.circleDirection = 1;
+    this.ovalDirection = 1;
+    this.rectDirection = 1;
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
-        this.xRect += (float)delta/20.0;
 
-        this.yRect += (float)delta/40.0;
-        if (xRect>800) {
-            this.yRect = 0;
-            this.xRect = 0;
 
+
+        if (ovalDirection == 1) {
+            this.xOval += (float) delta * 0.1;
+            if (xOval > 500) {
+                ovalDirection = -1;
+            }
+        } else {
+
+            this.xOval -= (float) delta * 0.1;
+            if (this.xOval < 10) {
+                ovalDirection = 1;
+            }
         }
 
-        this.xOval += (float) delta * 0.1;
 
-        if(xOval>800) {
-            this.yOval = 0;
-            this.xOval = 0;
+        if (circleDirection == 1) {
+            this.yCircle += (float) delta * 0.1;
+            if (yCircle > 500) {
+                circleDirection = -1;
+            }
+        } else {
+
+            this.yCircle -= (float) delta * 0.1;
+            if (this.yCircle < 10) {
+                circleDirection = 1;
+            }
         }
+
+
+
+
+
+
+
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
             graphics.drawRect(this.xRect, this.yRect, 100, 100);
             graphics.drawString("Hallo", 100, 100);
-            graphics.drawOval(this.xOval, this.yOval, 100, 100);
+            graphics.drawOval(this.xOval, this.yOval, 100, 50);
+            graphics.drawOval(this.xCircle, this.yCircle, 100, 100);
     }
 
     public static void main(String[] argv) {
