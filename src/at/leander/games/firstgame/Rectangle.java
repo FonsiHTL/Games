@@ -44,8 +44,37 @@ public class Rectangle extends BasicGame {
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
+        if(rectDirection == 1) {
+            this.xRect += (float) delta * 0.1;
+            if(this.xRect >= 600){
+                this.xRect = 600;
+                rectDirection = 2;
+            }
+        }
 
+       if(rectDirection == 2) {
+           this.yRect += (float) delta * 0.1;
+           if(this.yRect >= 450){
+               this.yRect = 450;
+               rectDirection = 3;
+           }
+       }
 
+       if(rectDirection == 3) {
+           this.xRect -= (float) delta * 0.1;
+           if(this.xRect <= 10){
+               this.xRect = 10;
+               rectDirection = 4;
+           }
+       }
+
+       if(rectDirection == 4) {
+           this.yRect -= (float) delta * 0.1;
+           if(this.yRect <= 20){
+               this.yRect = 20;
+               rectDirection = 1;
+           }
+       }
 
         if (ovalDirection == 1) {
             this.xOval += (float) delta * 0.1;
