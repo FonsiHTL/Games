@@ -2,11 +2,15 @@ package at.leander.games.firstgame;
 
 import org.newdawn.slick.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class ObjectGames extends BasicGame {
 
 
 
-    private Rectangle rectangle;
+    private List<Rectangle> rectangles;
 
     private Circle circle;
     private Oval oval;
@@ -20,7 +24,14 @@ public class ObjectGames extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
 
-     this.rectangle = new Rectangle(100, 100, 5, 1);
+        this.rectangles = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            Rectangle rectangle = new Rectangle
+                    (random.nextInt(600), random.nextInt(600), random.nextInt(50), 1);
+            rectangles.add(rectangle);
+        }
+     //this.rectangle = new Rectangle(100, 100, 5, 1);
      this.circle = new Circle(100,100,8,1);
      this.oval = new Oval(150,120,3,1);
 
@@ -29,7 +40,9 @@ public class ObjectGames extends BasicGame {
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
-        this.rectangle.update(delta);
+        for (Rectangle rectangle: this.rectangles) {
+            rectangle.update(delta);
+        }
         this.circle.update(delta);
         this.oval.update(delta);
     }
@@ -38,7 +51,9 @@ public class ObjectGames extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
 
-           this.rectangle.render(graphics);
+        for (Rectangle rectangle:this.rectangles) {
+            rectangle.render(graphics);
+        }
             this.circle.render(graphics);
             this.oval.render(graphics);
 
