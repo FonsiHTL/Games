@@ -1,131 +1,60 @@
 package at.leander.games.firstgame;
 
-import org.newdawn.slick.*;
-import org.newdawn.slick.tests.AnimationTest;
+import org.newdawn.slick.Graphics;
 
-import javax.swing.*;
+import java.awt.*;
 
-public class Rectangle extends BasicGame {
-
-    private int circleDirection;
-    private int ovalDirection;
-
+public class Rectangle {
+    private float x;
+    private float y;
+    private float speed;
     private int rectDirection;
 
-    private float xRect;
-    private float yRect;
-    private float xOval;
-    private float yOval;
+    public Rectangle(int x, int y, float speed, int rectDirection) {
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.rectDirection = rectDirection;
 
-    private float xCircle;
-
-    private float yCircle;
-
-
-
-
-    public Rectangle(String title) {
-        super(title);
     }
 
-    @Override
-    public void init(GameContainer gameContainer) throws SlickException {
-    this.xRect = 50;
-    this.yRect = 50;
-    this.xOval = 50;
-    this.yOval = 50;
-    this.xCircle = 100;
-    this.yCircle = 50;
-    this.circleDirection = 1;
-    this.ovalDirection = 1;
-    this.rectDirection = 1;
+    public void render(Graphics graphics){
+        graphics.drawRect(this.x,this.y, 30,30);
     }
 
-    @Override
-    public void update(GameContainer gameContainer, int delta) throws SlickException {
+    public void update(int delta){
+
 
         if(rectDirection == 1) {
-            this.xRect += (float) delta * 0.1;
-            if(this.xRect >= 600){
-                this.xRect = 600;
+            this.x += (float) delta / this.speed;
+            if(this.x >= 600){
+                this.x = 600;
                 rectDirection = 2;
             }
         }
 
-       if(rectDirection == 2) {
-           this.yRect += (float) delta * 0.1;
-           if(this.yRect >= 450){
-               this.yRect = 450;
-               rectDirection = 3;
-           }
-       }
-
-       if(rectDirection == 3) {
-           this.xRect -= (float) delta * 0.1;
-           if(this.xRect <= 10){
-               this.xRect = 10;
-               rectDirection = 4;
-           }
-       }
-
-       if(rectDirection == 4) {
-           this.yRect -= (float) delta * 0.1;
-           if(this.yRect <= 20){
-               this.yRect = 20;
-               rectDirection = 1;
-           }
-       }
-
-        if (ovalDirection == 1) {
-            this.xOval += (float) delta * 0.1;
-            if (xOval > 500) {
-                ovalDirection = -1;
-            }
-        } else {
-
-            this.xOval -= (float) delta * 0.1;
-            if (this.xOval < 10) {
-                ovalDirection = 1;
+        if(rectDirection == 2) {
+            this.y += (float) delta / this.speed;
+            if(this.y >= 450){
+                this.y = 450;
+                rectDirection = 3;
             }
         }
 
-
-        if (circleDirection == 1) {
-            this.yCircle += (float) delta * 0.1;
-            if (yCircle > 500) {
-                circleDirection = -1;
-            }
-        } else {
-
-            this.yCircle -= (float) delta * 0.1;
-            if (this.yCircle < 10) {
-                circleDirection = 1;
+        if(rectDirection == 3) {
+            this.x -= (float) delta / this.speed;
+            if(this.x <= 10){
+                this.x = 10;
+                rectDirection = 4;
             }
         }
 
-
-
-
-
-
-
-    }
-
-    @Override
-    public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-            graphics.drawRect(this.xRect, this.yRect, 100, 100);
-            graphics.drawString("Hallo", 100, 100);
-            graphics.drawOval(this.xOval, this.yOval, 100, 50);
-            graphics.drawOval(this.xCircle, this.yCircle, 100, 100);
-    }
-
-    public static void main(String[] argv) {
-        try {
-            AppGameContainer container = new AppGameContainer(new Rectangle("Rectangle"));
-            container.setDisplayMode(800,600,false);
-            container.start();
-        } catch (SlickException e) {
-            e.printStackTrace();
+        if(rectDirection == 4) {
+            this.y -= (float) delta / this.speed;
+            if(this.y <= 20){
+                this.y = 20;
+                rectDirection = 1;
+            }
         }
     }
 }
