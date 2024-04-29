@@ -4,7 +4,7 @@ import org.newdawn.slick.Graphics;
 
 import java.awt.*;
 
-public class Rectangle {
+public class Rectangle implements Actor {
     private float x;
     private float y;
     private float speed;

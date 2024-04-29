@@ -2,7 +2,7 @@ package at.leander.games.firstgame;
 
 import org.newdawn.slick.Graphics;
 
-public class Circle {
+public class Circle implements Actor{
 
     private float x;
     private float y;
