@@ -25,6 +25,8 @@ public class Circle implements Actor{
 
         if (circleDirection == 1) {
             this.y += (float) delta / this.speed;
+            this.y = (float) y * 2;
+            this.x = (float) x * 2;
             if (y > 500) {
                 circleDirection = -1;
             }
