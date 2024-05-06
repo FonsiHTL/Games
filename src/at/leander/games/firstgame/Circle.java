@@ -8,25 +8,26 @@ public class Circle implements Actor{
     private float y;
     private float speed;
     private int circleDirection;
+    private float diameter;
 
-    public Circle(int x, int y, float speed, int circleDirection) {
+    public Circle(int x, int y, float speed, float diameter, int circleDirection) {
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.diameter = diameter;
         this.circleDirection = circleDirection;
 
     }
 
-    public void render(Graphics graphics){
-        graphics.drawOval(this.x,this.y, 25,25);
+    public void render(Graphics graphics) {
+        graphics.drawOval(this.x, this.y, this.diameter, this.diameter);
     }
 
     public void update(int delta){
 
         if (circleDirection == 1) {
             this.y += (float) delta / this.speed;
-            this.y = (float) y * 2;
-            this.x = (float) x * 2;
+
             if (y > 500) {
                 circleDirection = -1;
             }
@@ -36,6 +37,10 @@ public class Circle implements Actor{
             if (this.y < 10) {
                 circleDirection = 1;
             }
+        }
+
+        if (circleDirection == 1){
+            this.diameter += 0.005;
         }
 
     }

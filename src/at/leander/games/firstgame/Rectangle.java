@@ -33,11 +33,27 @@ public class Rectangle implements Actor {
             }
         }
 
+        if(rectDirection == -1){
+            this.x -=(float) delta / this.speed;
+            if(this.x <= 10){
+                this.x = 10;
+                rectDirection = -2;
+            }
+        }
+
         if(rectDirection == 2) {
             this.y += (float) delta / this.speed;
             if(this.y >= 450){
                 this.y = 450;
                 rectDirection = 3;
+            }
+        }
+
+        if(rectDirection == -2) {
+            this.y -= (float) delta / this.speed;
+            if(this.y <= 20){
+                this.y = 20;
+                rectDirection = -3;
             }
         }
 
@@ -49,11 +65,27 @@ public class Rectangle implements Actor {
             }
         }
 
+        if(rectDirection == -3) {
+            this.x += (float) delta / this.speed;
+            if(this.x >= 500){
+                this.x = 5000;
+                rectDirection = -4;
+            }
+        }
+
         if(rectDirection == 4) {
             this.y -= (float) delta / this.speed;
             if(this.y <= 20){
                 this.y = 20;
                 rectDirection = 1;
+            }
+        }
+
+        if(rectDirection == -4) {
+            this.y += (float) delta / this.speed;
+            if(this.y >= 500){
+                this.y = 500;
+                rectDirection = -1;
             }
         }
     }

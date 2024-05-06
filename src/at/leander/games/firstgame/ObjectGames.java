@@ -22,24 +22,24 @@ public class ObjectGames extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
 
         this.actors = new ArrayList<>();
-        //Random random = new Random();
+        Random random = new Random();
         for (int i = 0; i < 10; i++) {
             Rectangle rectangle = new Rectangle
-                    (50, 50, 50,  1);
+                    (random.nextInt(600), random.nextInt(600), random.nextInt(50),  -1);
             this.actors.add(rectangle);
         }
 
 
         for (int i = 0; i < 10; i++) {
             Circle circle = new Circle
-                    (100, 100 ,100 , 2);
+                    (random.nextInt(600), random.nextInt(600), random.nextInt(50), 30, 1);
             this.actors.add(circle);
         }
 
 
         for (int i = 0; i < 10; i++) {
             Oval oval = new Oval
-                    (70, 70, 70, 1);
+                    (random.nextInt(600), random.nextInt(600), random.nextInt(50), 2);
             this.actors.add(oval);
 
         }
