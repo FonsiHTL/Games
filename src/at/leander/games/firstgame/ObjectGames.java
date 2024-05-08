@@ -11,9 +11,6 @@ public class ObjectGames extends BasicGame {
     private List<Actor> actors;
 
 
-
-
-
     public ObjectGames(String title) {
         super(title);
     }
@@ -25,15 +22,15 @@ public class ObjectGames extends BasicGame {
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
             Rectangle rectangle = new Rectangle
-                    (random.nextInt(600), random.nextInt(600), random.nextInt(50),  -1);
+                    (random.nextInt(600), random.nextInt(600), random.nextInt(50),  1);
             this.actors.add(rectangle);
         }
 
 
         for (int i = 0; i < 10; i++) {
-            Circle circle = new Circle
-                    (random.nextInt(600), random.nextInt(600), random.nextInt(50), 30, 1);
-            this.actors.add(circle);
+            Circle circle1 = new Circle();
+
+            this.actors.add(circle1);
         }
 
 

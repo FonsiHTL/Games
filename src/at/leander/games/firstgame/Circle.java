@@ -2,13 +2,24 @@ package at.leander.games.firstgame;
 
 import org.newdawn.slick.Graphics;
 
-public class Circle implements Actor{
+import java.util.Random;
+
+public class Circle implements Actor {
 
     private float x;
     private float y;
     private float speed;
     private int circleDirection;
     private float diameter;
+
+    public Circle() {
+        Random random = new Random();
+        this.x = random.nextInt(600);
+        this.y = random.nextInt(600);
+        this.speed = 50;
+        this.diameter = 30;
+        this.circleDirection = 1;
+    }
 
     public Circle(int x, int y, float speed, float diameter, int circleDirection) {
         this.x = x;
@@ -23,7 +34,7 @@ public class Circle implements Actor{
         graphics.drawOval(this.x, this.y, this.diameter, this.diameter);
     }
 
-    public void update(int delta){
+    public void update(int delta) {
 
         if (circleDirection == 1) {
             this.y += (float) delta / this.speed;
@@ -39,7 +50,7 @@ public class Circle implements Actor{
             }
         }
 
-        if (circleDirection == 1){
+        if (circleDirection == 1) {
             this.diameter += 0.005;
         }
 
