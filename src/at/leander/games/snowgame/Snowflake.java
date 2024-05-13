@@ -23,13 +23,14 @@ public class Snowflake implements Actor{
 
         if (size == SIZE.MEDIUM){
             this.size = 8;
-            this.speed = 5;
+            this.speed = 6;
         }
 
         if (size == SIZE.SMALL){
-            this.size = 4;
-            this.speed = 8;
+            this.size = 6;
+            this.speed = 4;
         }
+        setRandomPosition();
     }
 
     private void setRandomPosition(){
@@ -45,7 +46,7 @@ public class Snowflake implements Actor{
     @Override
     public void update(int delta){
         this.y += (float)delta / this.speed;
-        if (this.y > 600){
+        if (this.y >  Snowworld.SCREEN_HEIGTH){
             setRandomPosition();
         }
 

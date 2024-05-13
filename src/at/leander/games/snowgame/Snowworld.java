@@ -10,6 +10,7 @@ public class Snowworld extends BasicGame {
     private List<Actor> snowflakes;
     public static int SCREEN_WIDTH = 800;
     public static int SCREEN_HEIGTH = 600;
+     
     public Snowworld(String title) {
         super(title);
     }
@@ -18,7 +19,7 @@ public class Snowworld extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.snowflakes = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i < 100; i++) {
             this.snowflakes.add(new Snowflake(Snowflake.SIZE.BIG));
             this.snowflakes.add(new Snowflake(Snowflake.SIZE.MEDIUM));
             this.snowflakes.add(new Snowflake(Snowflake.SIZE.SMALL));
