@@ -1,27 +1,27 @@
 package at.leander.games.secondgame;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 public class Rocket implements Actor {
     private Image rocketImage;
     private float x;
     private float y;
-    private int rocketDirection;
+    //private int rocketDirection;
 
     private int speed;
 
 
-    public Rocket(float x, float y, int speed, int rocketDirection) throws SlickException {
+
+
+    public Rocket(float x, float y, int speed/*,*int rocketDirection*/) throws SlickException {
 
         this.x = x;
         this.y = y;
-        this.rocketDirection = rocketDirection;
+        //this.rocketDirection = rocketDirection;
         this.speed = speed;
 
         Image tmp = new Image("testdata/rocket.png");
-        this.rocketImage = tmp.getScaledCopy(50, 50);
+        this.rocketImage = tmp.getScaledCopy(80, 80);
     }
 
 
@@ -31,43 +31,78 @@ public class Rocket implements Actor {
     }
 
     @Override
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
 
-        if (rocketDirection == 1) {
+        if(gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)){
             this.x += (float) delta / this.speed;
-            if (this.x >= 600) {
-                this.x = 600;
-                rocketDirection = 2;
-
+            if(this.x == 600 || this.y == 800 || this.y == -800 || this.x == -600){
+                this.x = 300;
+                this.y = 300;
             }
         }
 
-
-        if (rocketDirection == 2) {
-            this.y += (float) delta / this.speed;
-            if (this.y >= 450) {
-                this.y = 450;
-                rocketDirection = 3;
-            }
-        }
-
-
-        if (rocketDirection == 3) {
+        if(gameContainer.getInput().isKeyDown(Input.KEY_LEFT)){
             this.x -= (float) delta / this.speed;
-            if (this.x <= 10) {
-                this.x = 10;
-                rocketDirection = 4;
+            if(this.x == 600 || this.y == 800 || this.y == -800 || this.x == -600){
+                this.x = 300;
+                this.y = 300;
             }
         }
-
-
-        if (rocketDirection == 4) {
+        if(gameContainer.getInput().isKeyDown(Input.KEY_UP)){
             this.y -= (float) delta / this.speed;
-            if (this.y <= 20) {
-                this.y = 20;
-                rocketDirection = 1;
+            if(this.x == 600 || this.y == 800 || this.y == -800 || this.x == -600){
+                this.x = 300;
+                this.y = 300;
             }
         }
+        if(gameContainer.getInput().isKeyDown(Input.KEY_DOWN)){
+            this.y += (float) delta / this.speed;
+            if(this.x >= 600 || this.y >= 800 || this.y <= -0 || this.x <= 0){
+                this.x = 300;
+                this.y = 300;
+            }
+        }
+    }
 
+    public Image getRocketImage() {
+        return rocketImage;
+    }
+
+    public void setRocketImage(Image rocketImage) {
+        this.rocketImage = rocketImage;
+    }
+
+    public float getX() {
+        return x + 32;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y - 30;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+   /* public int getRocketDirection() {
+        return rocketDirection;
+    }
+
+    public void setRocketDirection(int rocketDirection) {
+        this.rocketDirection = rocketDirection;
+    }
+    */
+
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }
