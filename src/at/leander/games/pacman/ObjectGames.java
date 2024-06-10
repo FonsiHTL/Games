@@ -1,6 +1,6 @@
 package at.leander.games.pacman;
 
-import at.leander.games.secondgame.Cannonball;
+
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
@@ -26,6 +26,8 @@ public class ObjectGames extends BasicGame {
         this.actors = new ArrayList<>();
         Random random = new Random();
 
+       PlayingField playingField = new PlayingField();
+       this.actors.add(playingField);
     }
 
     @Override
