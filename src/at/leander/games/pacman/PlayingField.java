@@ -1,6 +1,7 @@
 package at.leander.games.pacman;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Arrays;
@@ -9,6 +10,7 @@ public class PlayingField implements Actor {
 
     public static int GRID_SIZE = 40;
     private int[][] grid;
+
 
 
     public PlayingField() {
@@ -56,7 +58,15 @@ public class PlayingField implements Actor {
 
 
     @Override
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
 
+    }
+
+    public int[][] getGrid() {
+        return grid;
+    }
+
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
     }
 }

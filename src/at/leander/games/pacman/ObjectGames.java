@@ -28,13 +28,16 @@ public class ObjectGames extends BasicGame {
 
        PlayingField playingField = new PlayingField();
        this.actors.add(playingField);
+
+       Pacman pacman = new Pacman(30,30, 3, playingField);
+       this.actors.add(pacman);
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
         for (Actor actor: this.actors) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
         }
 
 
@@ -50,15 +53,11 @@ public class ObjectGames extends BasicGame {
 
     }
 
-   /* @Override
+   @Override
     public void keyPressed(int key, char c) {
-        if(key == Input.KEY_SPACE){
-            System.out.println("shoot");
-            Cannonball cannonball = new Cannonball(this.rocket.getX(), this.rocket.getY());
-            this.actors.add(Pacman);
-        }
+
     }
-*/
+
     public static void main(String[] argv) {
         try {
             AppGameContainer container = new AppGameContainer(new ObjectGames("ObjectGames"));
