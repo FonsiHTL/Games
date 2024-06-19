@@ -29,7 +29,7 @@ public class ObjectGames extends BasicGame {
        PlayingField playingField = new PlayingField();
        this.actors.add(playingField);
 
-       Pacman pacman = new Pacman(30,30, 3, playingField);
+       Pacman pacman = new Pacman(40,40, 3, playingField);
        this.actors.add(pacman);
     }
 
